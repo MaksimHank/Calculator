@@ -1,3 +1,4 @@
+//go:generate mockgen -destination=mock_contract_test.go -package=${GOPACKAGE} -source=contract.go
 package calculator
 
 import "calculator/internal/model"
