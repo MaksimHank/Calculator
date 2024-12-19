@@ -76,7 +76,7 @@ func (h *Handler) Subtraction(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result := h.calcService.Add(data)
+	result := h.calcService.Subtraction(data)
 
 	dataBytes, err := json.Marshal(result)
 	if err != nil {
