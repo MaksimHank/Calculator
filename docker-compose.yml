@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  maksim-db:
+    container_name: maksim-db
+    image: postgres:15
+    environment:
+      POSTGRES_USER: master
+      POSTGRES_PASSWORD: master
+      POSTGRES_DB: master
+    ports:
+      - "4444:5432"
+    volumes:
+      - maksim-db-vol:/var/lib/postgresql/data
+
+volumes:
+  maksim-db-vol:
