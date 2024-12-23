@@ -19,6 +19,10 @@ func main() {
 
 	http.HandleFunc("/subtraction", handler.Subtraction)
 
+	http.HandleFunc("/multiplication", handler.Multiplication)
+
+	http.HandleFunc("/division", handler.Division)
+
 	if err := http.ListenAndServe("localhost:9001", nil); err != nil {
 		log.Fatal(err)
 	}
