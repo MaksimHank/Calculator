@@ -23,6 +23,8 @@ func main() {
 
 	http.HandleFunc("/division", handler.Division)
 
+	http.HandleFunc("/results", handler.Result)
+
 	if err := http.ListenAndServe("localhost:9001", nil); err != nil {
 		log.Fatal(err)
 	}
