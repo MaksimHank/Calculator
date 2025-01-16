@@ -51,3 +51,10 @@ func (s *Service) Division(data model.Operands) model.Result {
 	}
 	return model.Result{}
 }
+
+func (s *Service) Results(limit int) model.Results {
+	result := s.calcRepo.Select(limit)
+	res := model.Results{}
+	res.List = result
+	return res
+}

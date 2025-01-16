@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"strconv"
 )
 
 type Handler struct {
@@ -157,6 +158,33 @@ func (h *Handler) Division(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// TODO Когда будем созранять данные поменять статус на 201
+	w.WriteHeader(http.StatusOK)
+	w.Write(dataBytes)
+}
+
+func (h *Handler) Result(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
+	limitS := r.URL.Query().Get("limit")
+
+	limit, err := strconv.Atoi(limitS)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(err.Error()))
+		return
+	}
+
+	res := h.calcService.Results(limit)
+
+	dataBytes, err := json.Marshal(res)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(err.Error()))
+		return
+	}
 	w.WriteHeader(http.StatusOK)
 	w.Write(dataBytes)
 }

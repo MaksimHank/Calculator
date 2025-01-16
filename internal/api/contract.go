@@ -7,4 +7,5 @@ type CalculatorService interface {
 	Subtraction(model.Operands) model.Result
 	Multiplication(model.Operands) model.Result
 	Division(model.Operands) model.Result
+	Results(limit int) model.Results
 }

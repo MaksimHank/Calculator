@@ -10,8 +10,12 @@ type Result struct {
 }
 
 type Storage struct {
-	FirstOperand  float64
-	Operator      string
-	SecondOperand float64
-	Result        float64
+	FirstOperand  float64 `db:"first_operand"`
+	Operator      string  `db:"operator"`
+	SecondOperand float64 `db:"second_operand"`
+	Result        float64 `db:"result"`
+}
+
+type Results struct {
+	List []Storage `json:"list"`
 }
